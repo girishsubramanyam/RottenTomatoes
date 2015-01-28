@@ -9,8 +9,11 @@
 /* Begin PBXBuildFile section */
 		4C82A02B1A77168500CEC003 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C82A0291A77168500CEC003 /* MoviesViewController.m */; };
 		4C82A02C1A77168500CEC003 /* MoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C82A02A1A77168500CEC003 /* MoviesViewController.xib */; };
-		4C82A0301A7729AE00CEC003 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C82A02E1A7729AE00CEC003 /* MovieCell.m */; };
-		4C82A0311A7729AE00CEC003 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C82A02F1A7729AE00CEC003 /* MovieCell.xib */; };
+		4C94120F1A786C64005610E7 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C94120D1A786C64005610E7 /* MovieCell.m */; };
+		4C9412101A786C64005610E7 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C94120E1A786C64005610E7 /* MovieCell.xib */; };
+		4C9412141A7978A6005610E7 /* MovieDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9412121A7978A6005610E7 /* MovieDetails.m */; };
+		4C9412151A7978A6005610E7 /* MovieDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C9412131A7978A6005610E7 /* MovieDetails.xib */; };
+		4C9412181A7985C1005610E7 /* MovieRefreshController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9412171A7985C1005610E7 /* MovieRefreshController.m */; };
 		4CBA079C1A77131F00AA3E41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA079B1A77131F00AA3E41 /* main.m */; };
 		4CBA079F1A77131F00AA3E41 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBA079E1A77131F00AA3E41 /* AppDelegate.m */; };
 		4CBA07A71A77131F00AA3E41 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBA07A61A77131F00AA3E41 /* Images.xcassets */; };
@@ -34,9 +37,14 @@
 		4C82A0281A77168500CEC003 /* MoviesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
 		4C82A0291A77168500CEC003 /* MoviesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
 		4C82A02A1A77168500CEC003 /* MoviesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesViewController.xib; sourceTree = "<group>"; };
-		4C82A02D1A7729AE00CEC003 /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
-		4C82A02E1A7729AE00CEC003 /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
-		4C82A02F1A7729AE00CEC003 /* MovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
+		4C94120C1A786C64005610E7 /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
+		4C94120D1A786C64005610E7 /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
+		4C94120E1A786C64005610E7 /* MovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
+		4C9412111A7978A6005610E7 /* MovieDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetails.h; sourceTree = "<group>"; };
+		4C9412121A7978A6005610E7 /* MovieDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetails.m; sourceTree = "<group>"; };
+		4C9412131A7978A6005610E7 /* MovieDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieDetails.xib; sourceTree = "<group>"; };
+		4C9412161A7985C1005610E7 /* MovieRefreshController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieRefreshController.h; sourceTree = "<group>"; };
+		4C9412171A7985C1005610E7 /* MovieRefreshController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieRefreshController.m; sourceTree = "<group>"; };
 		4CBA07961A77131F00AA3E41 /* RottenTomatoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RottenTomatoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBA079A1A77131F00AA3E41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CBA079B1A77131F00AA3E41 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -109,9 +117,14 @@
 				4C82A0281A77168500CEC003 /* MoviesViewController.h */,
 				4C82A0291A77168500CEC003 /* MoviesViewController.m */,
 				4C82A02A1A77168500CEC003 /* MoviesViewController.xib */,
-				4C82A02D1A7729AE00CEC003 /* MovieCell.h */,
-				4C82A02E1A7729AE00CEC003 /* MovieCell.m */,
-				4C82A02F1A7729AE00CEC003 /* MovieCell.xib */,
+				4C94120C1A786C64005610E7 /* MovieCell.h */,
+				4C94120D1A786C64005610E7 /* MovieCell.m */,
+				4C94120E1A786C64005610E7 /* MovieCell.xib */,
+				4C9412111A7978A6005610E7 /* MovieDetails.h */,
+				4C9412121A7978A6005610E7 /* MovieDetails.m */,
+				4C9412131A7978A6005610E7 /* MovieDetails.xib */,
+				4C9412161A7985C1005610E7 /* MovieRefreshController.h */,
+				4C9412171A7985C1005610E7 /* MovieRefreshController.m */,
 			);
 			path = RottenTomatoes;
 			sourceTree = "<group>";
@@ -235,7 +248,8 @@
 			files = (
 				4CBA07AA1A77131F00AA3E41 /* LaunchScreen.xib in Resources */,
 				4C82A02C1A77168500CEC003 /* MoviesViewController.xib in Resources */,
-				4C82A0311A7729AE00CEC003 /* MovieCell.xib in Resources */,
+				4C9412151A7978A6005610E7 /* MovieDetails.xib in Resources */,
+				4C9412101A786C64005610E7 /* MovieCell.xib in Resources */,
 				4CBA07A71A77131F00AA3E41 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,7 +303,9 @@
 			files = (
 				4C82A02B1A77168500CEC003 /* MoviesViewController.m in Sources */,
 				4CBA079F1A77131F00AA3E41 /* AppDelegate.m in Sources */,
-				4C82A0301A7729AE00CEC003 /* MovieCell.m in Sources */,
+				4C94120F1A786C64005610E7 /* MovieCell.m in Sources */,
+				4C9412141A7978A6005610E7 /* MovieDetails.m in Sources */,
+				4C9412181A7985C1005610E7 /* MovieRefreshController.m in Sources */,
 				4CBA079C1A77131F00AA3E41 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
