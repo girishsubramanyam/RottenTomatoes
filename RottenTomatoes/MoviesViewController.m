@@ -10,48 +10,44 @@
 #import "MovieCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "MovieDetails.h"
+#import "SVProgressHUD.h"
 
-@interface MoviesViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic,strong) NSArray *names;
 @property (nonatomic,strong) NSArray *movies;
-
+@property (nonatomic,strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIView *errorViewCell;
 @end
 
 
 @implementation MoviesViewController
 
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.names = @[@"jimmy"];
     
     //self.tableView.dataSource = self;
+    [self refresh];
+    self.errorViewCell.hidden = YES;
     
-    NSURL *url = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=7z5gkrhbzrutm6xs727qnfvm&limit=20&country=us"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        // runs when async response comes back
-        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        //NSLog(@"reponse: %@",responseDictionary[@"movies"]);
-        self.movies = responseDictionary[@"movies"];
-        [self.tableView reloadData];
-        }];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.rowHeight = 128;
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"MovieCell" bundle:nil] forCellReuseIdentifier:@"MovieCell"];
     
-     
-     }
+   
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table Methods
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
    return self.movies.count;
     
@@ -63,26 +59,41 @@
     
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"synopsis"];
+    cell.criticsScore.text = [NSString stringWithFormat:@"%@", movie[@"ratings"][@"critics_score"]];
+    cell.audienceScore.text = [NSString stringWithFormat:@"%@", movie[@"ratings"][@"audience_score"]];
+    cell.mpaaRating.text = movie[@"mpaa_rating"];
     [cell.movieImageThumbnail setImageWithURL:[NSURL URLWithString:[movie valueForKeyPath:@"posters.thumbnail"]]];
     self.title = @"Movies";
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MovieDetails *vc = [[MovieDetails alloc] init];
     vc.movie = self.movies[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - Custom
+- (void)refresh
+{
+    NSURL * url = nil;
+    url = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=7z5gkrhbzrutm6xs727qnfvm&limit=20&country=us"];
     
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [SVProgressHUD show];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (connectionError) {
+            self.errorViewCell.hidden = NO;
+            NSLog(@"Error: %@", connectionError.localizedDescription);
+        } else {
+            self.errorViewCell.hidden = YES;
+            NSDictionary * responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            self.movies = responseDictionary[@"movies"];
+            [self.tableView reloadData];
+        }
+        [self.refreshControl endRefreshing];
+        [SVProgressHUD dismiss];
+    }];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

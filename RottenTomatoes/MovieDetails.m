@@ -25,6 +25,7 @@
     self.titleLabel.text = self.movie[@"title"];
     self.synopsisLabel.text = self.movie[@"synopsis"];
     NSString *url = [self.movie valueForKeyPath:@"posters.thumbnail"];
+    [self.imageBackground setImageWithURL:[NSURL URLWithString:url]];
     NSString *high_resolution_url = [url stringByReplacingOccurrencesOfString:@"_tmb" withString:@"_ori"];
     [self.imageBackground setImageWithURL:[NSURL URLWithString:high_resolution_url]];
 
