@@ -13,4 +13,4 @@ Required
 - [x] User can pull to refresh the movie list.
 
 
-![rottentomato](https://cloud.githubusercontent.com/assets/10636391/5969020/4dd5dba4-a7d3-11e4-8556-413cde3a286f.gif)
+![rottentomato](https://cloud.githubusercontent.com/assets/10636391/5969107/457a1d5c-a7d4-11e4-9e37-48135a5472f6.gif)
